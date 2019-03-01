@@ -1,3 +1,28 @@
-<p>
-  sign-up works!
-</p>
+<div class="container sign-up__container">
+    <div class="sign-up__formwrap">
+        <h3 class="sign-up__formwrap__title">Регистрация</h3>
+        <form class="sign-up__form">
+          <div class="email-wrap"> 
+              <label for="">E-mail</label>
+              <input type="email" class="sign-up__email-input">
+          </div>
+          <div class="name-wrap"> 
+              <label for="">Имя</label>
+              <input type="text" class="sign-up__name-input">
+          </div>
+          <div class="surname-wrap"> 
+              <label for="">Фамилия</label>
+              <input type="text" class="sign-up__surname-input">
+          </div>
+            <div class="password-wrap">
+                <label for="signup-password">Пароль</label>
+                <input id="signup-password" type="password" class="sign-up__password-input">
+            </div>
+            <div class="confirm-password-wrap">
+                <label for="signup-confirm-password">Пароль ещё раз</label>
+                <input id="signup-confirm-password" type="password" class="sign-up__confirm-password-input">
+            </div>
+            <input class="btn-signup__submit btn-primary" type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+  </div>
