@@ -4,25 +4,30 @@
         <form class="sign-up__form" [formGroup]="signUpForm" (ngSubmit)="signInOnSubmit()">
           <div class="email-wrap"> 
               <label for="">E-mail</label>
-              <input type="email" class="sign-up__email-input" formControlName="email">
+              <input [ngClass]="{'input-error': signUpForm.get('email').invalid && signUpForm.get('email').touched}" type="email" class="sign-up__email-input" formControlName="email">
+              <span *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched" class="valid-err-text">Введите корректный e-mail</span>
           </div>
           <div class="name-wrap"> 
               <label for="">Имя</label>
-              <input type="text" class="sign-up__name-input" formControlName="name">
+              <input [ngClass]="{'input-error': signUpForm.get('name').invalid && signUpForm.get('name').touched}" type="text" class="sign-up__name-input" formControlName="name">
+              <span *ngIf="signUpForm.get('name').invalid && signUpForm.get('name').touched" class="valid-err-text">Введите имя</span>
           </div>
           <div class="surname-wrap"> 
               <label for="">Фамилия</label>
-              <input type="text" class="sign-up__surname-input" formControlName="surname">
+              <input [ngClass]="{'input-error': signUpForm.get('surname').invalid && signUpForm.get('surname').touched}" type="text" class="sign-up__surname-input" formControlName="surname">
+              <span *ngIf="signUpForm.get('surname').invalid && signUpForm.get('surname').touched" class="valid-err-text">Введите фамилию</span>
           </div>
             <div class="password-wrap">
                 <label for="signup-password">Пароль</label>
-                <input id="signup-password" type="password" class="sign-up__password-input" formControlName="password">
+                <input [ngClass]="{'input-error': signUpForm.get('password').invalid && signUpForm.get('password').touched}" id="signup-password" type="password" class="sign-up__password-input" formControlName="password">
+                <span *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').touched" class="valid-err-text">Введите пароль</span>
             </div>
             <div class="confirm-password-wrap">
                 <label for="signup-confirm-password">Пароль ещё раз</label>
-                <input id="signup-confirm-password" type="password" class="sign-up__confirm-password-input" formControlName="confirmPassword">
+                <input [ngClass]="{'input-error': signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').touched}" id="signup-confirm-password" type="password" class="sign-up__confirm-password-input" formControlName="confirmPassword">
+                <span *ngIf="signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').touched" class="valid-err-text">Подтвердите пароль</span>
             </div>
-            <input class="btn-signup__submit btn-primary" type="submit" value="Зарегистрироваться">
+            <button class="btn-signup__submit btn-primary" [disabled]="signUpForm.invalid" type="submit">Зарегистрироваться</button>
         </form>
     </div>
   </div>
