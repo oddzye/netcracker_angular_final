@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,10 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.less']
 })
 export class SignUpComponent implements OnInit {
-
-  constructor() { }
-
+  private _userRegister;
   signUpForm: FormGroup;
+  constructor(private _userService: AuthService) { 
+  }
+  
+  
 
   ngOnInit() {
     this.signUpForm = new FormGroup({
@@ -23,8 +26,24 @@ export class SignUpComponent implements OnInit {
   }
 
   signInOnSubmit():void {
+    this._userRegister = {
+      email: this.signUpForm.value.email,
+      name: this.signUpForm.value.name,
+      surname: this.signUpForm.value.surname,
+      password: this.signUpForm.value.password,
+      confirmPassword: this.signUpForm.value.confirmPassword
+    };
+    this._userService.pushToUsers(this._userRegister);
+   
+    let users = JSON.parse(localStorage.getItem('users'));
+    if (users === null) {
+      localStorage.setItem('users', JSON.stringify([this._userRegister]));
+    }
+    else {
+      users.push(this._userRegister);
+      localStorage.setItem('users', JSON.stringify(users));
+    }
     
-    console.log("submited", this.signUpForm);
   }
   
 }
