@@ -23,6 +23,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signInOnSubmit():void {
+    
     console.log("submited", this.signUpForm);
   }
   
