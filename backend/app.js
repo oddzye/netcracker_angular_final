@@ -1,5 +1,5 @@
 const express = require('express');
-const keys = require('./config/keys');
+
 const cors = require('cors');
 const morgan = require('morgan');
 const authRoutes = require('./routes/auth');
