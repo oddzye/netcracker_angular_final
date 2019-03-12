@@ -1,14 +1,7 @@
-
-const mongoClient = require('mongodb').MongoClient;
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const User = require('../models/User');
-
-const mongoConnection = (closure) => mongoClient.connect(keys.mongoURI, (err, client) => {
-    if (err) return console.log(err);
-    let db = client.db('share_knowledge');
-    closure(db);
-})
+const mongoConnection = require('../middleware/mongoConnection');
 
 module.exports.login = (req, res) => {
     mongoConnection(async (db) => {
