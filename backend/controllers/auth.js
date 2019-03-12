@@ -1,5 +1,6 @@
 
 const mongoClient = require('mongodb').MongoClient;
+const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const User = require('../models/User');
 
@@ -10,10 +11,32 @@ const mongoConnection = (closure) => mongoClient.connect(keys.mongoURI, (err, cl
 })
 
 module.exports.login = (req, res) => {
-    res.status(200).json({
-        login: {
-            email: req.body.email,
-            password: req.body.password
+    mongoConnection(async (db) => {
+        const candidate = await db.collection("users").findOne({email: req.body.email});
+
+        if (candidate) {
+            const isPasswordsEqual = req.body.password === candidate.password;
+            if (isPasswordsEqual) {
+                //generate token 
+                const token = jwt.sign({
+                    email: candidate.email,
+                    userId: candidate._id
+                }, keys.jwt, {expiresIn: 3600});
+
+                res.status(200).json({
+                    token: `Bearer ${token}`
+                })
+            }
+            else {
+                res.status(401).json({
+                    message: 'Вы ввели неверный пароль, повторите попытку'
+                })
+            }
+        }
+        else {
+            res.status(404).json({
+                message: 'Пользователь с таким email не существует'
+            })
         }
     })
 }
