@@ -11,20 +11,29 @@ const options = {
 
 module.exports = passport => {
     passport.use(new JwtStrategy(options, async (jwt_payload, done) => {
-        try {
-            const user = await db.collection("users").findById(jwt_payload.userId).select('email id')
-
-            if (user) {
-                done(null, user);
+        mongoConnection( async (db) => {
+            try {
+                const user = await db.collection("users").findOne({"_id": jwt_payload.userId}, (err, user) => {
+                    if (err) {
+                        done(err, false);
+                        console.log(err);
+                    }
+                    if (user) {
+                        done(null, user);
+                        console.log(err);
+                    }
+                    else {
+                        done(null, false);
+                        console.log("WTF")
+                        
+                    }
+                })
+                console.log(jwt_payload.userId);
             }
-            else {
-                done(null, false);
+            catch(e) {
+                console.log(e);
             }
-        }
-        catch(e) {
-            console.log(e);
-        }
-        
+        })
         
     }));
 }
