@@ -10,10 +10,10 @@ const options = {
 };
 
 module.exports = passport => {
-    passport.use(new JwtStrategy(options, async (jwt_payload, done) => {
+    passport.use(new JwtStrategy(options,  (jwt_payload, done) => {
         mongoConnection( async (db) => {
             try {
-                const user = await db.collection("users").findOne({"_id": jwt_payload.userId}, (err, user) => {
+                const user = await db.collection("users").findOne({email: jwt_payload.email}, (err, user) => {
                     if (err) {
                         done(err, false);
                         console.log(err);
