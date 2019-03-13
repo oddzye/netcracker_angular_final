@@ -16,15 +16,15 @@ module.exports = passport => {
                 const user = await db.collection("users").findOne({email: jwt_payload.email}, (err, user) => {
                     if (err) {
                         done(err, false);
-                        console.log(err);
+                        
                     }
                     if (user) {
                         done(null, user);
-                        console.log(err);
+                       
                     }
                     else {
                         done(null, false);
-                        console.log("WTF")
+                        
                         
                     }
                 })

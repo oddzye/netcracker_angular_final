@@ -1,22 +1,28 @@
-<div class="container">
-  <header class="header">
-    <nav>
-      <div class="header-content">
-        <div class="header-content-img__container">
-          <img class="header-content__logo" src="../../assets/img/netcracker-service__logo.png" alt="Netcracker logo">
-        </div>
-        <ul class="header-nav__list">
-          <li>Главная</li>
-          <li>Статьи</li>
-          <li>Публикации</li>
-        </ul>
+<div class="header-layout">
+    <div class="container">
+        <header class="header">
+          <nav>
+            <div class="header-content">
+              <div class="header-content-img__container">
+                <img class="header-content__logo" src="../../assets/img/netcracker-service__logo.png" alt="Netcracker logo">
+              </div>
+              <ul class="header-nav__list">
+                <li>Главная</li>
+                <li>Статьи</li>
+                <li>Публикации</li>
+              </ul>
+            </div>
+          </nav>
+          <div class="header-content__btns__wrap">
+            <a routerLink="/create-article" class="btn btn-navbar btn-secondary btn-write__article">
+              <fa-icon [icon]="_faPencilAlt"></fa-icon>
+              </a>
+            <a routerLink="/sign-in" class="btn btn-secondary btn-navbar btn-sign-in">Войти</a>
+            <a routerLink="/sign-up" class=" btn btn-primary btn-navbar">Регистарция</a>
+          </div>
+        </header>
       </div>
-    </nav>
-    <div class="header-content__btns__wrap">
-      <a routerLink="/sign-in" class="btn btn-secondary btn-navbar btn-sign-in">Войти</a>
-      <a routerLink="/sign-up" class=" btn btn-primary btn-navbar">Регистарция</a>
-    </div>
-  </header>
 </div>
+
 
 <router-outlet></router-outlet>
