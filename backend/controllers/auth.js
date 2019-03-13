@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const User = require('../models/User');
+const errorHandler = require('../utils/errorHandler')
 const mongoConnection = require('../middleware/mongoConnection');
 
 module.exports.login = (req, res) => {
@@ -35,9 +36,6 @@ module.exports.login = (req, res) => {
 }
 
 module.exports.register = (req, res) => {
-    // mongoConnection((db) => {
-
-    // })
      mongoConnection(async (db) => {
         const candidate = await db.collection("users").findOne({email: req.body.email});
         console.log(candidate);
@@ -47,14 +45,20 @@ module.exports.register = (req, res) => {
             })
         }   
         else {
-       const user = await db.collection("users").insert(new User({
-            email: req.body.email,
-            password: req.body.password
-        }), (err, result) => {
-            if (err) console.log(`Error register user, ${err}`);
-            console.log("User register result ", result);
-            res.status(201).json(user);
-        })
+            try {
+                const user = await db.collection("users").insert(new User({
+                    email: req.body.email,
+                    password: req.body.password
+                }), (err, result) => {
+                    if (err) console.log(`Error register user, ${err}`);
+                    console.log("User register result ", result);
+                    res.status(201).json(user);
+                })    
+            }
+            catch (e) {
+                errorHandler(res, e);
+            }
+       
         }    
     })
 }
