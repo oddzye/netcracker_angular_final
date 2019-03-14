@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class SignUpComponent implements OnInit {
   private _userRegister;
   signUpForm: FormGroup;
-  constructor(private _userService: AuthService) { 
+  constructor() { 
   }
   
   
@@ -33,16 +33,7 @@ export class SignUpComponent implements OnInit {
       password: this.signUpForm.value.password,
       confirmPassword: this.signUpForm.value.confirmPassword
     };
-    this._userService.pushToUsers(this._userRegister);
-   
-    let users = JSON.parse(localStorage.getItem('users'));
-    if (users === null) {
-      localStorage.setItem('users', JSON.stringify([this._userRegister]));
-    }
-    else {
-      users.push(this._userRegister);
-      localStorage.setItem('users', JSON.stringify(users));
-    }
+    
     
   }
   

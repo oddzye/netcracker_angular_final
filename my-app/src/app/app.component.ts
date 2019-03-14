@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [AuthService]
+  providers: []
 })
 export class AppComponent {
   title = 'my-app';
