@@ -1,7 +1,16 @@
 <div class="container">
   <h2 class="text-gray">Заполните следующие поля, чтобы опубликовать статью</h2>
-  <div class="article-title">
-    <label for="">Введите заголовок статьи</label>
-    <input type="text"> 
-  </div>
+  <form>
+    <div class="article-title">
+      <label for="">Введите заголовок статьи</label>
+      <input type="text"> 
+    </div>
+    
+      <app-select-section></app-select-section>
+    
+    <div class="article-content">
+      <label for="">Текст:</label>
+      <angular-editor  [(ngModel)]="htmlContent" name="article-content"></angular-editor>
+    </div>
+  </form>
 </div>
