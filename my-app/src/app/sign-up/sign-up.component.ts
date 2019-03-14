@@ -35,14 +35,6 @@ export class SignUpComponent implements OnInit {
     };
     this._userService.pushToUsers(this._userRegister);
    
-    let users = JSON.parse(localStorage.getItem('users'));
-    if (users === null) {
-      localStorage.setItem('users', JSON.stringify([this._userRegister]));
-    }
-    else {
-      users.push(this._userRegister);
-      localStorage.setItem('users', JSON.stringify(users));
-    }
     
   }
   
