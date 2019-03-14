@@ -13,8 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'sign-in', component: SignInComponent},
-  {path: "sign-up", component: SignUpComponent},
+  {path: 'api/auth/login', component: SignInComponent},
+  {path: "api/auth/register", component: SignUpComponent},
   {path: "create-article", component: CreateArticleComponent}
 ];
 
