@@ -26,8 +26,9 @@ export class AuthService {
   }
   
   isAuth():boolean {
-    return !!this._token;
+    return !!this.getToken();
   }
+
   logOut() {
     this.setToken(null);
     localStorage.clear();
@@ -38,7 +39,8 @@ export class AuthService {
       .pipe(
         tap(
           ({token}) => {
-            localStorage.setItem('authToken', token)
+            localStorage.setItem('authToken', token);
+            this.setToken(token);
           }
         )
       )

@@ -18,6 +18,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { SelectSectionComponent } from './shared/select-section/select-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { OverviewComponent } from './overview/overview.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SignUpComponent,
     CreateArticleComponent,
     SelectSectionComponent,
+    OverviewComponent,
     
   ],
   imports: [

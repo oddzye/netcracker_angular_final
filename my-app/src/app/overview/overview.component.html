@@ -1,0 +1,12 @@
+<div class="container">
+  <ul>
+      <li *ngFor='let article of articles'>
+        <div  class="article-wrap">
+          <span>{{article.creator}}</span>
+          <h3>{{article.title}}</h3>
+          <span>{{article.section}}</span>
+          <p>{{article.htmlContent}}</p>
+        </div>
+      </li>
+  </ul>
+</div>

@@ -17,8 +17,8 @@
             <a routerLink="/create-article" class="btn btn-navbar btn-secondary btn-write__article">
               <fa-icon [icon]="_faPencilAlt"></fa-icon>
               </a>
-            <a routerLink="/api/auth/login" class="btn btn-secondary btn-navbar btn-sign-in">Войти</a>
-            <a routerLink="/api/auth/register" class=" btn btn-primary btn-navbar">Регистарция</a>
+            <a routerLink="/api/auth/login" class="btn btn-secondary btn-navbar btn-sign-in">{{getSignButtonText()}}</a>
+            <a routerLink="/api/auth/register" [ngStyle]="getRegisterBtnStyle()" class=" btn btn-primary btn-navbar">Регистарция</a>
           </div>
         </header>
       </div>
