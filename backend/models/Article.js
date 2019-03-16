@@ -14,6 +14,18 @@ const articleSchema = new Schema({
     user: {
         type: User
     },
+    comments: [
+        {
+            user: {
+                type: User,
+                required: true
+            },
+            text: {
+                type: String,
+                required: true
+            }
+        }
+    ]
     
 });
 
