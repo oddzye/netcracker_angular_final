@@ -1,12 +1,34 @@
 <section class="blog">
   <div class="container">
-    <div class="blog-btns__wrap">
-        <button type="button" *ngIf="!_newPost" class="btn btn-navbar btn-secondary btn-write__article" (click)="newBlogForm()">
-          <fa-icon class="icon-pencil" [icon]="_faPencilAlt"></fa-icon>
-          Написать статью
-        </button>
-        <button type="button" class="btn btn-primary btn-blog__reload" *ngIf="!_newPost">Обновить</button>
-    </div>   
+      <div class="blog-btns__wrap">
+          <button type="button" *ngIf="!_newPost" class="btn btn-navbar btn-secondary btn-write__article" (click)="newBlogForm()">
+            <fa-icon class="icon-pencil" [icon]="_faPencilAlt"></fa-icon>
+            Написать статью
+          </button>
+          <button [disabled]="_loadingBlogs" (click)="reloadBlogs()" type="button" class="btn btn-primary btn-blog__reload" *ngIf="!_newPost">Обновить</button>
+      </div>  
+      <div class="blog-item" *ngIf="!_newPost"> 
+          <div class="blog-header">
+              <h3>Заголовок</h3>
+          </div>
+            <div class="blog-body">
+              <p class="blog-body__text">
+                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+              </p>
+            </div>
+            <div class="blog-footer">
+                <p class="blog-footer__author">
+                  <strong>Создатель:</strong> user123
+                </p>
+                <p class="blog-footer__date">
+                    <strong>Дата:</strong> Июнь, 2019
+                </p>
+                <div class="blog-footer-btns__wrap">
+                  <button class="btn-edit-blog">Редактировать пост </button>
+                  <button class="btn-delete-blog">Удалить пост</button>
+                </div>
+              </div>
+      </div> 
   </div>
 </section>
-<p>blog wroks</p>
+
