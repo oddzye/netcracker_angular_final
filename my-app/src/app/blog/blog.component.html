@@ -1,0 +1,12 @@
+<section class="blog">
+  <div class="container">
+    <div class="blog-btns__wrap">
+        <button type="button" *ngIf="!_newPost" class="btn btn-navbar btn-secondary btn-write__article" (click)="newBlogForm()">
+          <fa-icon class="icon-pencil" [icon]="_faPencilAlt"></fa-icon>
+          Написать статью
+        </button>
+        <button type="button" class="btn btn-primary btn-blog__reload" *ngIf="!_newPost">Обновить</button>
+    </div>   
+  </div>
+</section>
+<p>blog wroks</p>

@@ -19,6 +19,7 @@ import { SelectSectionComponent } from './shared/select-section/select-section.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { OverviewComponent } from './overview/overview.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { OverviewComponent } from './overview/overview.component';
     CreateArticleComponent,
     SelectSectionComponent,
     OverviewComponent,
+    BlogComponent,
     
   ],
   imports: [
