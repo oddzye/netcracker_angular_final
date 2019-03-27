@@ -32,6 +32,7 @@
     "ngx-bootstrap": "^3.2.0",
     "ngx-editor": "^4.1.0",
     "ngx-mat-select-search": "^1.6.0",
+    "normalize.css": "^8.0.1",
     "rxjs": "^6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
