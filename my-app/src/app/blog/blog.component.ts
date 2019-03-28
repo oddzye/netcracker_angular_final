@@ -15,6 +15,10 @@ export class BlogComponent implements OnInit {
     this._newPost = true;
   }
 
+  draftComment() {
+
+  }
+  
   reloadBlogs() {
     this._loadingBlogs = true;
     //Get Add Blogs 
