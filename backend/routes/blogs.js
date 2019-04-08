@@ -7,7 +7,7 @@ const controller = require('../controllers/blogs');
 router.get('/', passport.authenticate('jwt', {session: false}), controller.getAll);
 router.post('/update', controller.update);
 router.delete('/:id', controller.remove);
-router.post('/new', controller.create);
+router.post('/', controller.create);
 // router.patch('/:id', controller.update);
 
 module.exports = router;

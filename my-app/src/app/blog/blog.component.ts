@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup, FormBuilder, Validators, MinLengthValidator } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service'
+import { BlogService } from '../shared/services/blog.service'
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -17,7 +19,9 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _blogService: BlogService,
+    private _router: Router
 
   ) { 
     this.createNewBlogForm()
@@ -59,6 +63,14 @@ export class BlogComponent implements OnInit {
       body: this.blogForm.value.body,
       createdBy: this.userEmail
     };
+
+    this._blogService.createNewArticle(blog).subscribe({
+      next: () => this._router.navigate(['/']),
+      error: (err) => {
+        console.warn(err) 
+        this.blogForm.enable()
+      } 
+    });
     console.log(blog);
     console.log('form submitted');
   }

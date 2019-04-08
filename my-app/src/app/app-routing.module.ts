@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: "api/auth/register", component: SignUpComponent},
   {path: "create-article", component: CreateArticleComponent},
   {path: "overview", component: OverviewComponent},
-  {path: "blog", component: BlogComponent}
+  {path: "api/blogs", component: BlogComponent}
 ];
 
 @NgModule({
