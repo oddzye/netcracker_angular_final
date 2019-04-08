@@ -3,7 +3,6 @@ const errorHandler = require('../utils/errorHandler')
 const mongoConnection = require('../middleware/mongoConnection');
 
 module.exports.getAll = (req, res) => {
-    // res.status(200).json({message: 'Articles'})
     res.send("test");
 }
 
@@ -48,9 +47,10 @@ module.exports.create = (req, res) => {
             }
         }
     })
+
     
 }
 
 module.exports.update = (req, res) => {
-    
+   
 }
