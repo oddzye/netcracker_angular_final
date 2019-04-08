@@ -11,6 +11,11 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
 
   private _token = null;
+  private _currentUser: User  =  {
+    email: "some@mail.ru",
+    password: "123"
+  };
+
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<User> {
@@ -24,7 +29,15 @@ export class AuthService {
   getToken():string {
     return this._token;
   }
-  
+
+  setCurrentUser(user: User) {
+    this._currentUser = user;
+  }
+
+  getCurrentUser() {
+    return this._currentUser.email;
+  }
+
   isAuth():boolean {
     return !!this.getToken();
   }
@@ -41,6 +54,7 @@ export class AuthService {
           ({token}) => {
             localStorage.setItem('authToken', token);
             this.setToken(token);
+            this.setCurrentUser(user);
           }
         )
       )
