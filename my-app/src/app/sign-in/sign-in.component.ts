@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       password: this.signInForm.value.password
     };
    this.aSub =  this._auth.login(user).subscribe({
-      next: () => this._router.navigate(['/overview']),
+      next: () => this._router.navigate(['/api/blogs']),
       error: (err) => {
         console.warn(err) 
         this.signInForm.enable()
