@@ -45,16 +45,17 @@
       <!-- New blog creating -->
       <div class="create-blog__item" *ngIf="_newPost" > 
         <form [formGroup]="blogForm" name="blogForm" (submit)="onBlogSubmit()">
-          <label for="title">Заголвок статьи</label>
+          <label class="create-blog__label" for="title">Заголвок статьи:</label>
           <div [ngClass]="{'input-error': blogForm.get('title').invalid && blogForm.get('title').touched}">
-            <input type="text" name="title" placeholder="Заголовок статьи" autocomplete="off" formControlName="title"/>
+            <input class="create-blog__input-title" type="text" name="title" placeholder="Заголовок статьи" autocomplete="off" formControlName="title"/>
             <ul class="help-block">
               <li *ngIf="blogForm.get('title').invalid && blogForm.get('title').touched">Заполните это поле</li>
             </ul>
           </div>
-          <textarea formControlName="body" name="content" id="form-control" cols="30" rows="10"></textarea>
-          <button type="submit" class="post-comment__btn">Запостить</button>
-          <button type="button" class="cancel-comment__btn" (click)="hideNewBlogForm()">Назад</button>
+          <label class="create-blog__label" for="blog-body">Текст статьи:</label>
+          <textarea class="blog-item__body" id="blog-body" placeholder="Напишите текст статьи" formControlName="body" name="content" id="form-control" cols="30" rows="10"></textarea>
+          <button type="submit" class="post-comment__btn  btn btn-primary ">Запостить</button>
+          <button type="button" class="cancel-comment__btn btn btn-secondary " (click)="hideNewBlogForm()">Назад</button>
         </form>
       </div>
       
