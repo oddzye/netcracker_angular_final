@@ -1,10 +1,10 @@
 <section class="blog">
   <div class="container">
       <div class="blog-btns__wrap">
-          <button type="button" *ngIf="!_newPost" class="btn btn-navbar btn-secondary btn-write__article" (click)="newBlogForm()">
+          <a routerLink="/api/blogs/newBlog" type="button" *ngIf="!_newPost" class="btn btn-navbar btn-secondary btn-write__article">
             <fa-icon class="icon-pencil" [icon]="_faPencilAlt"></fa-icon>
             Написать статью
-          </button>
+          </a>
           <button [disabled]="_loadingBlogs" (click)="reloadBlogs()" type="button" class="btn btn-primary btn-blog__reload" *ngIf="!_newPost">Обновить</button>
       </div>  
       <div class="blog-item" *ngIf="!_newPost"> 

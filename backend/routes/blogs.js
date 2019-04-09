@@ -8,7 +8,7 @@ const controller = require('../controllers/blogs');
 // router.get('/', controller.getAll);
 router.post('/update', controller.update);
 router.delete('/:id', controller.remove);
-router.post('/', controller.create);
+router.post('/newBlog', controller.create);
 // router.patch('/:id', controller.update);
 
 module.exports = router;

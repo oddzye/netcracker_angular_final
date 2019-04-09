@@ -12,14 +12,16 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverviewComponent } from './overview/overview.component';
 import { BlogComponent } from './blog/blog.component';
-
+import { NewBlogComponent } from './new-blog/new-blog.component'
+ 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'api/auth/login', component: SignInComponent},
   {path: "api/auth/register", component: SignUpComponent},
   {path: "create-article", component: CreateArticleComponent},
   {path: "overview", component: OverviewComponent},
-  {path: "api/blogs", component: BlogComponent}
+  {path: "api/blogs", component: BlogComponent}, 
+  {path: "api/blogs/newBlog", component: NewBlogComponent}
 ];
 
 @NgModule({
