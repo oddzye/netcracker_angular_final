@@ -4,7 +4,8 @@ const passport = require('passport')
 const controller = require('../controllers/blogs');
 
 
-router.get('/', passport.authenticate('jwt', {session: false}), controller.getAll);
+// router.get('/', passport.authenticate('jwt', {session: false}), controller.getAll);
+// router.get('/', controller.getAll);
 router.post('/update', controller.update);
 router.delete('/:id', controller.remove);
 router.post('/', controller.create);

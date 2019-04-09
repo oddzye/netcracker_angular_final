@@ -39,7 +39,7 @@ export class BlogComponent implements OnInit {
   }
 
   hideNewBlogForm() {
-   window.location.reload();
+    this._router.navigate(['/']);
   }
 
   draftComment() {
