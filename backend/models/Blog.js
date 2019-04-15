@@ -20,7 +20,7 @@ const blogSchema = new Schema({
     comments: [
         {
             comment: {
-                type: String,
+                type: String
             },
             commentator: {
                 type: String

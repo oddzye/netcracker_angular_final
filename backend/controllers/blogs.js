@@ -2,16 +2,24 @@ const Blog = require('../models/Blog')
 const errorHandler = require('../utils/errorHandler')
 const mongoConnection = require('../middleware/mongoConnection');
 
+
 module.exports.getAll = (req, res) => {
+    
+// or 
+   
     mongoConnection( async (db) => {
         try {
+             await db.collection('blogs').find({}).toArray((err, blogs) => {
+                res.json({success: true, blogs: blogs});
+            });
 
         } 
         catch (e) {
             errorHandler(res, e);
         }
     })
-    res.send("test");
+   
+    
 }
 
 module.exports.getById = (req, res) => {
@@ -23,7 +31,6 @@ module.exports.remove = (req, res) => {
 }
 
 module.exports.create = (req, res) => {
-    // console.log("1");
     mongoConnection( async (db) => {
         console.log("2");
         if(!req.body.title) {
