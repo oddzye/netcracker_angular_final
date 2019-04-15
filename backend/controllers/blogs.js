@@ -3,6 +3,14 @@ const errorHandler = require('../utils/errorHandler')
 const mongoConnection = require('../middleware/mongoConnection');
 
 module.exports.getAll = (req, res) => {
+    mongoConnection( async (db) => {
+        try {
+
+        } 
+        catch (e) {
+            errorHandler(res, e);
+        }
+    })
     res.send("test");
 }
 
@@ -15,13 +23,15 @@ module.exports.remove = (req, res) => {
 }
 
 module.exports.create = (req, res) => {
+    // console.log("1");
     mongoConnection( async (db) => {
+        console.log("2");
         if(!req.body.title) {
             res.status(401).json({ success: false, message: 'Blog title is required.'});
         }
         else {
             if (!req.body.body) {
-                res.json({success: false, message: "Blog body is required"});
+                res.json({success: false, messacge: "Blog body is required"});
             } 
             else {
                 if (!req.body.createdBy) {
@@ -47,10 +57,9 @@ module.exports.create = (req, res) => {
             }
         }
     })
-
+    
     
 }
 
 module.exports.update = (req, res) => {
-   
-}
+    `   `}

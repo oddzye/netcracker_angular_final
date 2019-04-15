@@ -12,6 +12,6 @@ export class BlogService {
   constructor(private http: HttpClient) {   }
 
   createNewArticle(blog: Blog): Observable<Blog> {
-    return this.http.post<Blog>('/api/blogs', blog)
+    return this.http.post<Blog>('/api/blogs/newBlog', blog)
   } 
 }

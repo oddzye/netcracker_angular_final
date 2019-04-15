@@ -34,9 +34,7 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  newBlogForm() {
-    this._newPost = true;
-  }
+ 
 
   hideNewBlogForm() {
     this._router.navigate(['/']);

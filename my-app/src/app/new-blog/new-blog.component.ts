@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { BlogService } from '../shared/services/blog.service';
 
 @Component({
   selector: 'app-new-blog',
@@ -23,10 +27,33 @@ export class NewBlogComponent implements OnInit {
     private _blogService: BlogService,
     private _router: Router
   ) { 
-    this.createNewBlogForm();
+
   }
 
   ngOnInit() {
+    this.createNewBlogForm();
+    console.log(this._authService.getCurrentUser());
+    this.userEmail = this._authService.getCurrentUser();
+  }
+
+  onBlogSubmit() {
+    this.blogForm.disable();
+    
+    const blog = {
+      title: this.blogForm.value.title,
+      body: this.blogForm.value.body,
+      createdBy: this.userEmail
+    };
+
+    this._blogService.createNewArticle(blog).subscribe({
+      next: () => this._router.navigate(['/']),
+      error: (err) => {
+        console.warn(err) 
+        this.blogForm.enable()
+      } 
+    });
+    console.log(blog);
+    console.log('form submitted');
   }
 
 }
