@@ -9,7 +9,7 @@ module.exports.getAll = (req, res) => {
    
     mongoConnection( async (db) => {
         try {
-             await db.collection('blogs').find({}).toArray((err, blogs) => {
+             await db.collection('blogs').find({}).sort({'_id': -1}).toArray((err, blogs) => {
                 res.json({success: true, blogs: blogs});
             });
 

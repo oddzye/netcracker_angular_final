@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators, MinLengthValidator } f
 import { AuthService } from '../shared/services/auth.service'
 import { BlogService } from '../shared/services/blog.service'
 import { Router} from '@angular/router';
+import { Blog } from '../shared/interfaces';
 
 @Component({
   selector: 'app-blog',
@@ -16,6 +17,7 @@ export class BlogComponent implements OnInit {
   private _loadingBlogs = false;
   blogForm: FormGroup;
   userEmail: string = "Not logged in";
+  _blogPosts
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +36,11 @@ export class BlogComponent implements OnInit {
     });
   }
 
- 
+  getAllBlogs() {
+    this._blogService.getAllBlogs().subscribe(data => {
+      this._blogPosts = data.blogs;
+    })
+  }
 
   hideNewBlogForm() {
     this._router.navigate(['/']);
